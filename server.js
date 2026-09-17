@@ -42,9 +42,9 @@ const nim = axios.create({
 // Per-attempt timeout before falling back to the next model. Reasoning
 // models get a longer window since thinking delays first-token latency.
 // Check these against your platform's own request duration limit.
-const REQUEST_TIMEOUT_MS = Number(process.env.REQUEST_TIMEOUT_MS) || 180000;
-const REASONING_REQUEST_TIMEOUT_MS = Number(process.env.REASONING_REQUEST_TIMEOUT_MS) || 480000;
-const VALIDATION_TIMEOUT_MS = 15000;
+const REQUEST_TIMEOUT_MS = Number(process.env.REQUEST_TIMEOUT_MS) || 360000;
+const REASONING_REQUEST_TIMEOUT_MS = Number(process.env.REASONING_REQUEST_TIMEOUT_MS) || 960000;
+const VALIDATION_TIMEOUT_MS = 45000;
 const MAX_BUFFER_SIZE = 1024 * 1024; // 1MB
 
 if (ENABLE_THINKING_MODE) console.log('[CONFIG] Thinking mode: ENABLED');
@@ -256,8 +256,8 @@ function safeWrite(res, data) {
 // Per-model cooldown after a 403/429, in-memory (resets on restart, not shared across instances).
 const modelCooldowns = new Map(); // model -> timestamp (ms) until which to skip it
 
-const RATE_LIMIT_COOLDOWN_MS = Number(process.env.RATE_LIMIT_COOLDOWN_MS) || 30000;
-const ACCESS_DENIED_COOLDOWN_MS = Number(process.env.ACCESS_DENIED_COOLDOWN_MS) || 300000;
+const RATE_LIMIT_COOLDOWN_MS = Number(process.env.RATE_LIMIT_COOLDOWN_MS) || 60000;
+const ACCESS_DENIED_COOLDOWN_MS = Number(process.env.ACCESS_DENIED_COOLDOWN_MS) || 600000;
 
 function isInCooldown(model) {
   const until = modelCooldowns.get(model);
