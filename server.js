@@ -70,7 +70,7 @@ const MODEL_MAPPING = {
   'gpt-3.5-turbo': 'nvidia/nemotron-3-super-120b-a12b',
   'gpt-4': 'nvidia/nemotron-3-ultra-550b-a55b',
   'gpt-3.5': 'z-ai/glm-5.3', // was qwen/qwen3.5-397b-a17b
-  'gpt-4-turbo': 'moonshotai/kimi-k3',
+  'gpt-4-turbo': 'moonshotai/kimi-k3.1-pro',
   'claude-3-opus': 'google/diffusiongemma-26b-a4b-it',
   'claude-3-sonnet': 'openai/gpt-oss-20b',
   'gemini-pro': 'nvidia/llama-3.1-nemotron-70b-instruct', // was nvidia/llama-3.3-nemotron-super-49b-v1.5
@@ -90,11 +90,11 @@ const MODEL_MAPPING = {
 };
 
 // Used when an unrecognized alias is requested. Must point at a live model.
-const DEFAULT_MODEL = 'moonshotai/kimi-k3';
+const DEFAULT_MODEL = 'moonshotai/kimi-k3.1-pro';
 
 // Ordered by observed reliability/speed — an early failing model delays every fallback behind it.
 const FALLBACK_MODELS = [
-  'moonshotai/kimi-k3',
+  'moonshotai/kimi-k3.1-pro',
 ];
 
 // ─── Middleware ─────────────────────────────────────────────────────────
